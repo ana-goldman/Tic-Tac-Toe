@@ -1,5 +1,6 @@
 const cells = document.querySelectorAll('[data-cell-index]');
 const restartButton = document.getElementById ? document.getElementById('restart') : null;
+const statusMessage = document.querySelector ? document.querySelector('#status') : null;
 const winningCombinations = [
   [0, 1, 2],
   [3, 4, 5],
@@ -13,6 +14,15 @@ const winningCombinations = [
 let currentPlayer = 'X';
 let board = Array(9).fill('');
 let gameEnded = false;
+
+function showStatus(message, isFinal = false) {
+  if (!statusMessage) {
+    return;
+  }
+
+  statusMessage.textContent = message;
+  statusMessage.dataset.state = isFinal ? 'final' : 'active';
+}
 
 function getWinningCombination(player) {
   return winningCombinations.find((combination) => (
@@ -43,21 +53,25 @@ function handleCellClick(event) {
       cells[winningIndex].dataset.winner = 'true';
     });
     gameEnded = true;
+    showStatus(`Player ${currentPlayer} wins`, true);
     return;
   }
 
   if (isDraw()) {
     gameEnded = true;
+    showStatus('Draw game', true);
     return;
   }
 
   currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+  showStatus(`Player ${currentPlayer}'s turn`);
 }
 
 function restartGame() {
   board = Array(9).fill('');
   currentPlayer = 'X';
   gameEnded = false;
+  showStatus("Player X's turn");
 
   cells.forEach((cell) => {
     cell.textContent = '';

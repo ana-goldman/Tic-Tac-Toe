@@ -33,6 +33,24 @@ h1 {
   text-align: center;
 }
 
+#status {
+  min-height: 1.5em;
+  margin: -12px 0 -6px;
+  color: var(--color-muted);
+  font-size: 0.98rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-align: center;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+#status[data-state="final"] {
+  color: var(--color-ink-x);
+  animation: statusReveal 360ms ease-out both;
+}
+
 #board {
   display: grid;
   grid-template-columns: repeat(3, 88px);
@@ -177,6 +195,18 @@ h1 {
   50% {
     filter: saturate(1.15);
     transform: rotate(-7deg) scale(1.08);
+  }
+}
+
+@keyframes statusReveal {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
