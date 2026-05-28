@@ -1,5 +1,9 @@
 # Tic-Tac-Toe
 
+## First-Time Setup
+
+No dependency installation is required for this static project. Open `index.html` in a web browser to start the game; the page loads `style.css` and `script.js` directly from the same folder.
+
 ## Static File Setup
 
 The app is split into separate `index.html`, `style.css`, and `script.js` files. The HTML links the stylesheet and script directly, keeping the static page workflow simple without adding build tooling or dependencies.
