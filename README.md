@@ -27,3 +27,7 @@ The board now has a soft surface treatment with light padding, rounded edges, an
 ## Drawn Marks
 
 Played cells now render X and O with custom ink-like shapes instead of default text styling. The marks use muted accent colors and slightly organic proportions while staying simple enough to read quickly.
+
+## Calm Motion
+
+Cells now respond with small hover and press transitions, and each placed mark appears with a brief ink-like motion. Winning cells receive a restrained brush-style pulse so the completed line is clear without disrupting the minimal interface.

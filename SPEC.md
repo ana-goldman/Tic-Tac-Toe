@@ -13,5 +13,5 @@ The board should feel tactile without becoming heavy or decorative. Shadows and 
 The marks should feel organic and ink-like while staying clean enough for fast readability. Use refined stroke weight, muted accent colors, and simple mark shapes that avoid cartoonish or overly ornate details.
 
 ### Step 4 — Calm Motion
-- [ ] Add tiny transitions, tactile move feedback, and subtle ink-brush inspired win motion.
+- [x] Add tiny transitions, tactile move feedback, and subtle ink-brush inspired win motion.
 Interactions should feel calm and satisfying, with short animations that support the game state without distracting from play. Move placement, hover states, and win feedback should all share the same restrained motion language.

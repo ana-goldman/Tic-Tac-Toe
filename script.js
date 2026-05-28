@@ -14,8 +14,8 @@ let currentPlayer = 'X';
 let board = Array(9).fill('');
 let gameEnded = false;
 
-function hasWinningCombination(player) {
-  return winningCombinations.some((combination) => (
+function getWinningCombination(player) {
+  return winningCombinations.find((combination) => (
     combination.every((index) => board[index] === player)
   ));
 }
@@ -36,7 +36,17 @@ function handleCellClick(event) {
   cell.textContent = currentPlayer;
   cell.dataset.mark = currentPlayer;
 
-  if (hasWinningCombination(currentPlayer) || isDraw()) {
+  const winningCombination = getWinningCombination(currentPlayer);
+
+  if (winningCombination) {
+    winningCombination.forEach((winningIndex) => {
+      cells[winningIndex].dataset.winner = 'true';
+    });
+    gameEnded = true;
+    return;
+  }
+
+  if (isDraw()) {
     gameEnded = true;
     return;
   }
@@ -52,6 +62,7 @@ function restartGame() {
   cells.forEach((cell) => {
     cell.textContent = '';
     delete cell.dataset.mark;
+    delete cell.dataset.winner;
   });
 }
 
